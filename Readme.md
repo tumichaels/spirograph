@@ -7,3 +7,10 @@
 2. mark a point on it (with another circle?)
 3. rotate?
 
+- strategy is to convert distance travelled into rotations
+- have to account for point of contact though
+
+
+## Goal 2: parameterize the marker position [x]
+
+## Goal 3: add path line [x]

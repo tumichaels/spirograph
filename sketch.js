@@ -1,5 +1,6 @@
 // constants
 const PI = 3.141592653589793;
+const DOT_SIZE = 6;
 
 // Variables for drawing
 let x, y;
@@ -7,19 +8,24 @@ let r1;
 let r2;
 let r3;
 let theta1, dtheta;
+let trail = []; // can just track px, py instead of whole trail
+let cv;
 
 // set defaults
-x = 200, y = 200;
+x = 300, y = 300;
 r1 = 150;
-r2 = 23;
-r3 = 6;
+r2 = 70;
+r3 = 55;
 theta1 = 0, dtheta = -1;
 
 
 // called once on startup
 function setup() {
-  createCanvas(500, 500);
+  cv = createCanvas(1000, 1000);
   angleMode(DEGREES);
+  let resetButton = createButton("Clear");
+  resetButton.position(0, 100);
+  resetButton.mousePressed(clearTrail);
 }
 
 // executed 60 times per second until program is stopped or noLoop function is called
@@ -42,12 +48,24 @@ function draw() {
   // need rotation from point of contact!
   // theta2 = (revs*360 + theta1)%360;
   theta2 = (r1/r2*theta1 + theta1)%360;
-  x2 = x1 + r2 * cos(theta2);
-  y2 = y1 + r2 * sin(theta2);
-  circle(x2, y2, 2*r3);
+  x2 = x1 + r3 * cos(theta2);
+  y2 = y1 + r3 * sin(theta2);
+  circle(x2, y2, 2*DOT_SIZE);
+  trail.push({x: x2, y: y2});
+  
+  fill(255,0,0)
+  for (let i = 1; i < trail.length; i++) {
+    const current = trail[i];
+    const previous = trail[i - 1];
+    cv.line(previous.x, previous.y, current.x, current.y);
+  }
 
 
   if (mouseIsPressed) {
     theta1 = (theta1 + dtheta); // this might overflow some point
   }
+}
+
+function clearTrail() {
+  trail = [];
 }
