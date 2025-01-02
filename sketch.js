@@ -28,7 +28,7 @@ function setup() {
   r1Slider = createSlider(150, 300, 225, 10);
   r1Slider.position(20, offset*1);
   r1Slider.style('width', sliderWidth);
-  r2Slider = createSlider(10, 100, 30, 1);
+  r2Slider = createSlider(10, 50, 33.33, 0.01);
   r2Slider.position(20, offset*2);
   r2Slider.style('width', sliderWidth);
   r3Slider = createSlider(0, 100, 85, 1);
@@ -69,8 +69,8 @@ function draw() {
   fill(0);
   // should show ratios
   r1_text    = text("r1 = " + r1, 25, offset - 5);
-  r2_text    = text("r2 = " + r2, 25, offset*2 - 5);
-  r3_text    = text("r3 = " + r3, 25, offset*3 - 5);
+  r2_text    = text("r2 = " + r2.toFixed(3), 25, offset*2 - 5);
+  r3_text    = text("r3 = " + r3.toFixed(3), 25, offset*3 - 5);
   speed_text = text("speed = " + dtheta*5, 25, offset*4 - 5);
 
   translate(150, 0);

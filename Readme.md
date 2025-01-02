@@ -14,3 +14,5 @@
 ## Goal 2: parameterize the marker position [x]
 
 ## Goal 3: add path line [x]
+
+## Goal 4: add some interesting presets, ie 5s, 7s, 6, 8, 9, 12
